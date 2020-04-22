@@ -14,7 +14,13 @@ function App() {
   }, [])
 
   async function handleAddRepository() {
-    // TODO
+    const response = await api.post('/repositories', {
+      url: 'https://github.com/Rocketseat/umbriel',
+      title: `Repository ${Date.now()}`,
+      techs: ['Node', 'React.js']
+    })
+
+    setRepositories([...repositories, response.data]);
   }
 
   async function handleRemoveRepository(id) {
